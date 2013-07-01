@@ -3,9 +3,6 @@ define mv_ssh::tools::authorized_keys (	$keys=["sh-rsa AZERTYUIOP..."],
 {
 	file {"${path}":
 		ensure => directory,
-		owner => "root",
-		group => "root",
-		mode => "644",
 	}
 	
 	file {"${path}/authorized_keys":
@@ -14,6 +11,6 @@ define mv_ssh::tools::authorized_keys (	$keys=["sh-rsa AZERTYUIOP..."],
 		group => "root",
 		mode => "644",
 		content => template("mv_ssh/authorized_keys.erb"),
-		require => File['/root/.ssh'],
+		require => File["${path}"],
 	}
 }
