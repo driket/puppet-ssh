@@ -15,12 +15,12 @@ define mv_ssh::tools::authorized_keys (
 
       file {"mv_ssh_${owner}_home":
         ensure  => directory,
-        name    => '/root',
+        path    => '/root',
       }
 
       file {"mv_ssh_${owner}_home_ssh":
         ensure  => directory,
-        name    => '/root/.ssh',
+        path    => '/root/.ssh',
         mode    => '0600',
         owner   => $owner,
         group   => $group,
@@ -28,7 +28,7 @@ define mv_ssh::tools::authorized_keys (
 
       file {"mv_ssh_${owner}_authorized_keys":
         ensure  => file,
-        name    => '/root/.ssh/authorized_keys',
+        path    => '/root/.ssh/authorized_keys',
         owner   => $owner,
         group   => $group,
         mode    => '0600',
@@ -42,12 +42,12 @@ define mv_ssh::tools::authorized_keys (
 
       file {"mv_ssh_${owner}_home":
         ensure  => directory,
-        name    => "/home/${owner}",
+        path    => "/home/${owner}",
       }
 
       file {"mv_ssh_${owner}_home_ssh":
         ensure  => directory,
-        name    => "/home/${owner}/.ssh",
+        path    => "/home/${owner}/.ssh",
         mode    => '0600',
         owner   => $owner,
         group   => $group,
@@ -55,7 +55,7 @@ define mv_ssh::tools::authorized_keys (
 
       file {"mv_ssh_${owner}_authorized_keys":
         ensure  => file,
-        name    => "/home/${owner}/.ssh/authorized_keys",
+        path    => "/home/${owner}/.ssh/authorized_keys",
         owner   => $owner,
         group   => $group,
         mode    => '0600',
