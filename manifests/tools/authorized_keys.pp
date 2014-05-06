@@ -8,17 +8,17 @@ define mv_ssh::tools::authorized_keys (
   $group  = 'root',
 )
 {
-
+  # Check if owner is root or not
   case $owner {
 
     'root': {
 
-      file {'mv_ssh_home':
+      file {"mv_ssh_${owner}_home":
         ensure  => directory,
         name    => '/root',
       }
 
-      file {'mv_ssh_home_ssh':
+      file {"mv_ssh_${owner}_home_ssh":
         ensure  => directory,
         name    => '/root/.ssh',
         mode    => '0600',
@@ -26,7 +26,7 @@ define mv_ssh::tools::authorized_keys (
         group   => $group,
       }
 
-      file {'mv_ssh_authorized_keys':
+      file {"mv_ssh_${owner}_authorized_keys":
         ensure  => file,
         name    => '/root/.ssh/authorized_keys',
         owner   => $owner,
@@ -40,12 +40,12 @@ define mv_ssh::tools::authorized_keys (
 
     default: {
 
-      file {'mv_ssh_home':
+      file {"mv_ssh_${owner}_home":
         ensure  => directory,
         name    => "/home/${owner}",
       }
 
-      file {'mv_ssh_home_ssh':
+      file {"mv_ssh_${owner}_home_ssh":
         ensure  => directory,
         name    => "/home/${owner}/.ssh",
         mode    => '0600',
@@ -53,7 +53,7 @@ define mv_ssh::tools::authorized_keys (
         group   => $group,
       }
 
-      file {'mv_ssh_authorized_keys':
+      file {"mv_ssh_${owner}_authorized_keys":
         ensure  => file,
         name    => "/home/${owner}/.ssh/authorized_keys",
         owner   => $owner,
