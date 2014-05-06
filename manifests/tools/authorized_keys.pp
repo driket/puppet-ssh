@@ -1,7 +1,11 @@
+# Setup user's authorized keys
+# Author::    Cedric Villa (https://github.com/driket)
+# Copyright:: Check licence file
+# License::   Check license file
 define mv_ssh::tools::authorized_keys (
-  $keys   = ["ssh-rsa AZERTYUIOP..."],
-  $owner  = "root",
-  $group  = "root",
+  $keys   = ['ssh-rsa AZERTYUIOP...'],
+  $owner  = 'root',
+  $group  = 'root',
 )
 {
 
@@ -61,7 +65,5 @@ define mv_ssh::tools::authorized_keys (
 
     }
   }
-
-
 
 }
