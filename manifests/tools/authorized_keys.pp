@@ -28,7 +28,7 @@ define mv_ssh::tools::authorized_keys (
         group   => $group,
         mode    => '0600',
         content => template('mv_ssh/authorized_keys.erb'),
-        require => File["mv_ssh_${owner}_home_ssh"],
+        # require => File["mv_ssh_${owner}_home_ssh"],
       }
 
     }
@@ -50,7 +50,7 @@ define mv_ssh::tools::authorized_keys (
         group   => $group,
         mode    => '0600',
         content => template('mv_ssh/authorized_keys.erb'),
-        require => File["mv_ssh_${owner}_home_ssh"],
+        # require => File["mv_ssh_${owner}_home_ssh"],
       }
 
     }
