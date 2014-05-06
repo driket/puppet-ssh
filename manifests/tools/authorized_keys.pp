@@ -13,11 +13,6 @@ define mv_ssh::tools::authorized_keys (
 
     'root': {
 
-      file {"mv_ssh_${owner}_home":
-        ensure  => directory,
-        path    => '/root',
-      }
-
       file {"mv_ssh_${owner}_home_ssh":
         ensure  => directory,
         path    => '/root/.ssh',
@@ -39,11 +34,6 @@ define mv_ssh::tools::authorized_keys (
     }
 
     default: {
-
-      file {"mv_ssh_${owner}_home":
-        ensure  => directory,
-        path    => "/home/${owner}",
-      }
 
       file {"mv_ssh_${owner}_home_ssh":
         ensure  => directory,
